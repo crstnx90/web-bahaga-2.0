@@ -2,8 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Obtén el formulario de login
     const loginForm = document.getElementById('loginForm');
 
-    
-
     // Captura el evento de envío del formulario
     loginForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Evitar que el formulario se envíe de forma tradicional
@@ -25,22 +23,29 @@ document.addEventListener("DOMContentLoaded", function () {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(loginData) // Enviar loginData al backend
+                body: JSON.stringify(loginData), // Enviar loginData al backend
+                credentials: 'include' // permite el envio de cookies
             });
 
             // Verificar si la solicitud fue exitosa
             if (response.ok) {
                 const data = await response.json();
 
-                // Si la respuesta es exitosa, redirige al usuario
+                // Si la respuesta es exitosa, redirige al usuario y almacena el token
                 if (data.success) {
                     alert(data.message);
-                    window.location.replace('/prueba_info.html'); // Redirigir de informacion
+
+                    // Guardar el token en el almacenamiento local
+                    localStorage.setItem('authToken', data.token);
+                    
+
+                    // Redirigir al panel de usuario
+                    window.location.replace('/index_personas.html');
                 } else {
                     alert(data.message);
                 }
             } else {
-                alert('Error al iniciar sesión'+response.statusText);
+                alert('Error al iniciar sesión: ' + response.statusText);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -48,3 +53,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+

@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles2.css">
 </head>
 <body>
-
-    <div class="container mt-5">
+    <header>
         <h1>Perfil de Usuario</h1>
-        <div id="perfil-container">
-            <p>Cargando datos del perfil...</p>
-        </div>
-    </div>
+    </header>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="/js/prueba_info.js"></script>
+    <main>
+        <section id="perfil">
+            <p><strong>Tus datos son:</strong></p>
+            <!-- Contenedor de los datos del usuario -->
+            <ul id="datos-usuario">
+                <!-- Los datos del usuario serán inyectados aquí por el script -->
+            </ul>
+        </section>
+    </main>
 
+    <footer>
+        <p>&copy; 2024 Bahaga Booking</p>
+    </footer>
+
+    <script src="./js/prueba_info.js"></script>
 </body>
 </html>
